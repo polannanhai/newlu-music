@@ -1,13 +1,11 @@
 package com.newlu.newlumusic.controller;
 
+import com.newlu.newlumusic.dto.UserCreateDto;
 import com.newlu.newlumusic.mapper.UserMapper;
 import com.newlu.newlumusic.service.UserService;
 import com.newlu.newlumusic.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +25,11 @@ public class UserController {
         return userService.list().stream().map(userMapper::
 
                 toVo).collect(Collectors.toList());
+    }
+
+    @PostMapping("/")
+    UserVo create(@RequestBody UserCreateDto userCreateDto){
+        return userMapper.toVo(userService.create(userCreateDto));
     }
 
     @Autowired
