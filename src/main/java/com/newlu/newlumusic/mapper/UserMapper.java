@@ -1,5 +1,6 @@
 package com.newlu.newlumusic.mapper;
 
+import com.newlu.newlumusic.dto.UserCreateDto;
 import com.newlu.newlumusic.dto.UserDto;
 import com.newlu.newlumusic.entity.User;
 import com.newlu.newlumusic.vo.UserVo;
@@ -12,4 +13,6 @@ public interface UserMapper {
     UserDto toDto(User user);
 
     UserVo toVo(UserDto userDto);
+
+    User createEntity(UserCreateDto userCreateDto);
 }
